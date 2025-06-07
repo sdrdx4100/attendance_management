@@ -1,0 +1,26 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="{% static 'attendance/js/attendance.js' %}"></script>
+</head>
+<body>
+  <h1>Attendance Form</h1>
+  <form id="attendance-form" method="post">
+    {% csrf_token %}
+    <table border="1">
+      <tr><th>Date</th><th>Start</th><th>End</th><th>Overtime</th></tr>
+      {% for day in days %}
+      <tr>
+        <td>{{ day.date }}</td>
+        <td><input type="time" name="start_{{ day.date }}"></td>
+        <td><input type="time" name="end_{{ day.date }}"></td>
+        <td><input type="text" name="overtime_{{ day.date }}" value="0"></td>
+      </tr>
+      {% endfor %}
+    </table>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>
