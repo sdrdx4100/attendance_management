@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+<head></head>
+<body>
+  <h1>Manage Attendance</h1>
+  <table border="1">
+    <tr><th>User</th><th>Date</th><th>Start</th><th>End</th><th>Status</th></tr>
+    {% for r in records %}
+    <tr>
+      <td>{{ r.user.username }}</td><td>{{ r.date }}</td>
+      <td>{{ r.start_time }}</td><td>{{ r.end_time }}</td><td>{{ r.status }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>
